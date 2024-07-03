@@ -1,0 +1,12 @@
+def swap_numbers(num1, num2):
+    temp = num1
+    num1 = num2
+    num2 = temp
+    return num1, num2
+
+# Example usage:
+num1 = 10
+num2 = 20
+
+num1, num2 = swap_numbers(num1, num2)
+print(f"After swapping: num1 = {num1}, num2 = {num2}")
