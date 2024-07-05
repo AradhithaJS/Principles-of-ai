@@ -1,0 +1,42 @@
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    # Finding the middle of the array
+    mid = len(arr) // 2
+
+    # Dividing the array elements into 2 halves
+    left_half = arr[:mid]
+    right_half = arr[mid:]
+
+    # Recursively sorting both halves
+    left_sorted = merge_sort(left_half)
+    right_sorted = merge_sort(right_half)
+
+    # Merging the sorted halves
+    return merge(left_sorted, right_sorted)
+
+def merge(left, right):
+    sorted_array = []
+    left_index = 0
+    right_index = 0
+
+    # Merge the two arrays while maintaining order
+    while left_index < len(left) and right_index < len(right):
+        if left[left_index] < right[right_index]:
+            sorted_array.append(left[left_index])
+            left_index += 1
+        else:
+            sorted_array.append(right[right_index])
+            right_index += 1
+
+    # Collecting the remaining elements
+    sorted_array.extend(left[left_index:])
+    sorted_array.extend(right[right_index:])
+
+    return sorted_array
+
+# Example usage:
+arr = [12, 11, 13, 5, 6, 7]
+sorted_arr = merge_sort(arr)
+print(f"Sorted array: {sorted_arr}")
